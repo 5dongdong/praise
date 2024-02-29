@@ -10,7 +10,9 @@ public class Quiz {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
-  private String quiz;
+  private Long quizId;
+  private String question;
+
+  private int score;
   private int answer;
 }
