@@ -15,6 +15,7 @@ public class QuizController {
 
   private QuizService quizService;
 
+//  @GetMapping("/quiz/{questionId}")
   @GetMapping("/quiz/{questionId}")
   public String quiz(@PathVariable Long questionId, Model model) {
     Quiz quiz = quizService.getQuizById(questionId);
@@ -37,9 +38,5 @@ public class QuizController {
     return "/donghyeon";
   }
 
-  @RequestMapping("/login")
-  public String login() {
-    return "/login";
-  }
 }
 

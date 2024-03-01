@@ -16,7 +16,7 @@ public class UserResponses {
 
   @ManyToOne
   @JoinColumn(name = "userId")
-  private User user;
+  private QuizUser quizUser;
 
   @ManyToOne
   @JoinColumn(name = "quizId")
