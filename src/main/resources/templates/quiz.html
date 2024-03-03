@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>퀴즈 페이지</title>
+</head>
+<body>
+<form action="/check-answer" method="post">
+    <input type="radio" name="userAnswer" th:value="${option1}" /> ${option1}<br/>
+    <input type="radio" name="userAnswer" th:value="${option2}" /> ${option2}<br/>
+    <input type="radio" name="userAnswer" th:value="${option3}" /> ${option3}<br/>
+    <input type="hidden" name="questionId" th:value="${questionId}" />
+</form>
+</body>
+</html>
