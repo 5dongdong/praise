@@ -14,15 +14,20 @@ public class UserResponses {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long responseId;
 
+  //응답자 ID
   @ManyToOne
   @JoinColumn(name = "userId")
   private QuizUser quizUser;
 
+  //문제의 ID
   @ManyToOne
   @JoinColumn(name = "quizId")
   private Quiz quiz;
 
+  //선택된 옵션
   @ManyToOne
   @JoinColumn(name = "optionId")
   private Options options;
+
+
 }
