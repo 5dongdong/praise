@@ -1,10 +1,7 @@
 package com.example.realpraise.controller;
 
-import com.example.realpraise.entity.Quiz;
 import com.example.realpraise.entity.QuizUser;
-import com.example.realpraise.repository.QuizRepository;
 import com.example.realpraise.repository.QuizUserRepository;
-import com.example.realpraise.service.QuizService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @AllArgsConstructor
 public class QuizController {
 
-  private QuizService quizService;
   private QuizUserRepository quizUserRepository;
 
-  @GetMapping("/quiz/{questionId}")
-  public String quiz(@PathVariable Long questionId, Model model) {
-    Quiz quiz = quizService.getQuizById(questionId);
-    model.addAttribute("Quiz", quiz);
+
+  @GetMapping("/quiz")
+  public String quiz() {
     return "/quiz";
   }
 
@@ -33,10 +28,6 @@ public class QuizController {
     return "/index";
   }
 
-  @RequestMapping("/test")
-  public String test() {
-    return "/test";
-  }
 
   @RequestMapping("/login")
   public String login() {
@@ -47,15 +38,17 @@ public class QuizController {
   public String saveUserName(QuizUser user, RedirectAttributes redirectAttributes) {
     QuizUser savedUser = quizUserRepository.save(user);
     redirectAttributes.addAttribute("userId", savedUser.getUserId());
-    return "redirect:/success-page/{userId}";
+    return "redirect:/quiz/{userId}";
   }
 
-  @GetMapping("/success-page/{userId}")
+
+  @GetMapping("/quiz/{userId}")
   public String showUserTest(@PathVariable Long userId, Model model) {
     QuizUser user = quizUserRepository.findById(userId).orElseThrow();
     model.addAttribute("user", user);
-    return "success-page";
+    return "quiz";
   }
+
 
 }
 
