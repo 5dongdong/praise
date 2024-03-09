@@ -18,8 +18,15 @@ public class Options {
   @JoinColumn(name = "quizId")
   private Quiz quiz;
 
-
   private String optionContents;
 
   private boolean isCorrect;
+
+  public boolean isCorrect() {
+    return isCorrect;
+  }
+
+  public void setCorrect(boolean correct) {
+    isCorrect = correct;
+  }
 }
