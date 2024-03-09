@@ -5,11 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class QuizUser {
 
   @Id
@@ -17,4 +19,10 @@ public class QuizUser {
   private Long userId;
 
   private String userName;
+
+  private int userScore;
+
+  public QuizUser(String userId, int i) {
+
+  }
 }
