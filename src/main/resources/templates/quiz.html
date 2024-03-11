@@ -2,69 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz with Thymeleaf</title>
+    <title>Quiz</title>
+    <link th:href="@{/static/quiz.css}" rel="stylesheet" />
 </head>
 <body>
 <form action="/ranking" method="post">
     <div>
         <p><span th:text="${user.userName}"></span></p>
     </div>
-    <!-- 문제 1 -->
-    <div>
-        <p>1. What is the capital of France?</p>
-        <input type="radio" id="paris" name="question1" value="Paris">
-        <label for="paris">Paris</label><br>
-        <input type="radio" id="london" name="question1" value="London">
-        <label for="london">London</label><br>
-        <input type="radio" id="rome" name="question1" value="Rome">
-        <label for="rome">Rome</label>
-    </div>
-
-    <!-- 문제 2 -->
-    <div>
-        <p>2. Who painted the Mona Lisa?</p>
-        <input type="radio" id="vinci" name="question2" value="Leonardo da Vinci">
-        <label for="vinci">Leonardo da Vinci</label><br>
-        <input type="radio" id="picasso" name="question2" value="Pablo Picasso">
-        <label for="picasso">Pablo Picasso</label><br>
-        <input type="radio" id="vanGogh" name="question2" value="Vincent van Gogh">
-        <label for="vanGogh">Vincent van Gogh</label>
-    </div>
-
-    <!-- 문제 3 -->
-    <div>
-        <p>3. What is the largest planet in our solar system?</p>
-        <input type="radio" id="jupiter" name="question3" value="Jupiter">
-        <label for="jupiter">Jupiter</label><br>
-        <input type="radio" id="mars" name="question3" value="Mars">
-        <label for="mars">Mars</label><br>
-        <input type="radio" id="saturn" name="question3" value="Saturn">
-        <label for="saturn">Saturn</label>
-    </div>
-
-    <!-- 문제 4 -->
-    <div>
-        <p>4. Which element has the chemical symbol 'O'?</p>
-        <input type="radio" id="oxygen" name="question4" value="Oxygen">
-        <label for="oxygen">Oxygen</label><br>
-        <input type="radio" id="gold" name="question4" value="Gold">
-        <label for="gold">Gold</label><br>
-        <input type="radio" id="hydrogen" name="question4" value="Hydrogen">
-        <label for="hydrogen">Hydrogen</label>
-    </div>
-
-    <!-- 문제 5 -->
-    <div>
-        <p>5. What year did the Titanic sink?</p>
-        <input type="radio" id="1912" name="question5" value="1912">
-        <label for="1912">1912</label><br>
-        <input type="radio" id="1905" name="question5" value="1905">
-        <label for="1905">1905</label><br>
-        <input type="radio" id="1898" name="question5" value="1898">
-        <label for="1898">1898</label>
-    </div>
-
-    <button type="submit">Submit Answers</button>
+    <table th:class="table">
+    <tr th:each="quiz : ${quizzes}">
+        <td th:utext="${quiz.question}"></td>
+    </tr>
+    </table>
 </form>
 </body>
 </html>
