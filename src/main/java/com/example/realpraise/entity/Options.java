@@ -6,8 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
 
 @Entity
+@Getter
 public class Options {
 
   @Id
@@ -21,12 +23,4 @@ public class Options {
   private String optionContents;
 
   private boolean isCorrect;
-
-  public boolean isCorrect() {
-    return isCorrect;
-  }
-
-  public void setCorrect(boolean correct) {
-    isCorrect = correct;
-  }
 }
