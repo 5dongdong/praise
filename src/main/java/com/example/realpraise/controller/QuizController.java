@@ -1,7 +1,9 @@
 package com.example.realpraise.controller;
 
+import com.example.realpraise.entity.Options;
 import com.example.realpraise.entity.Quiz;
 import com.example.realpraise.entity.QuizUser;
+import com.example.realpraise.repository.OptionRepository;
 import com.example.realpraise.repository.QuizRepository;
 import com.example.realpraise.repository.QuizUserRepository;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ public class QuizController {
 
   private QuizUserRepository quizUserRepository;
   private QuizRepository quizRepository;
+  private OptionRepository optionRepository;
 
 
   @RequestMapping("/index")
@@ -43,12 +46,13 @@ public class QuizController {
   @GetMapping("/quiz/{userId}")
   public String showUserTest(@PathVariable Long userId, Model model) {
     Iterable<Quiz> quizzes = quizRepository.findAll();
+    Iterable<Options> options = optionRepository.findAll();
     QuizUser user = quizUserRepository.findById(userId).orElseThrow();
     model.addAttribute("user", user);
     model.addAttribute("quizzes", quizzes);
+    model.addAttribute("options", options);
     return "quiz";
   }
-
 
 
 }
